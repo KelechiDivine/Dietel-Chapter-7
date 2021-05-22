@@ -1,8 +1,8 @@
 public class ClassGroupingTest {
     public static void main(String[] args) {
-        //    ClassGrouping newGrouping = new ClassGrouping();
-        ClassGrouping.randomizeArray(new char[]{'a', 'b', 'c', 'd', 'e', 'f'});
-        //     newGrouping.startProgram();
+//        ClassGrouping.randomizeArray(new char[]{'a', 'b', 'c', 'd', 'e', 'f'});
+        ClassGrouping.startProgram();
+//        ClassGrouping.startCohortTwoPairingProgram();
 
 //
 //        int[] [] b= {{2,3,7,1}, {4,1,7}};
@@ -13,7 +13,7 @@ public class ClassGroupingTest {
 //               }
 //               System.out.println();
 //           }
-
+//
 //        ClassGrouping newCohort = new ClassGrouping();
 //        newCohort.displayGroup();
 

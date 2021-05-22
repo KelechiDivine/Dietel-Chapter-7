@@ -8,7 +8,7 @@ public class ClassGrouping {
     static SecureRandom staticRandomNumber = new SecureRandom();
     private static int[] shuffledArray;
     private static String groupList;
-    private static String[] cohortTwoNatives = {"SCV2001 Somto Momah", "SCV2002 Waliu Olaifa", "SCV2003 Chibuzo Ekejiuba", "SCV2004 Makinde Akinola", "SCV2005 Cynthia Ineh",
+    private static final String[] cohortTwoNatives = {"SCV2001 Somto Momah", "SCV2002 Waliu Olaifa", "SCV2003 Chibuzo Ekejiuba", "SCV2004 Makinde Akinola", "SCV2005 Cynthia Ineh",
             " SCV2006 Nelson Ushingio", "SCV2007 Adejoke Opeyemi-Ogungbire", "SCV2008 Adebayo Adesanya", "SCV2009 Samuel Bako", "SCV2010 Oladayo Ayoola",
             "SCV2011 Hameed Sanusi", "SCV2012 Samuel Iruedo", "SCV2013 Oluwakemi Yusuf", "SCV2014 Naheem Noah", "SCV2015 Akin Odeku",
             "SCV2016 Joy Fatoye", "SCV2017 Joel Onojason", "SCV2018 Taver Targema", "SCV2019 Isaac Olowofila", "SCV2020 Adesola Adedugbe",
@@ -34,13 +34,13 @@ public class ClassGrouping {
 //
 //   }
 
-    public static String getCohort(int index) {
+    public static String getCohort(int index, int cohortNumber) {
         String cohortId;
         if (shuffledArray[index] < 10)
-            cohortId = "SCV200" + shuffledArray[index];
+            cohortId = "SCV" + cohortNumber + "00" + shuffledArray[index];
         else
 
-            cohortId = "SCV20" + shuffledArray[index];
+            cohortId = "SCV" + cohortNumber + "0" + shuffledArray[index];
 
         return cohortId;
     }
@@ -71,13 +71,13 @@ public class ClassGrouping {
 
     }
 
-    public static void createPair(int numberPerPair) {
+    public static void createPair(int numberPerPair, int cohortNumber) {
         groupList = "";
         int groupId = 1;
         int counter = 1;
         groupList = String.format("Group %d%n", groupId);
         while (counter < shuffledArray.length) {
-            groupList += getCohort(counter) + " ";
+            groupList += getCohort(counter, cohortNumber) + " ";
 //            groupList += String.format("%s%n", shuffledArray[counter-1]);
             if (counter % numberPerPair == 0) {
                 groupId++;
@@ -94,14 +94,14 @@ public class ClassGrouping {
     }
 
     public static void displayGroup() {
-        createPair(Integer.parseInt(JOptionPane.showInputDialog("A group of?")));
+        createPair(Integer.parseInt(JOptionPane.showInputDialog("A group of?")), Integer.parseInt(JOptionPane.showInputDialog("for cohort?")));
         JTextArea textArea = new JTextArea(groupList);
         JScrollPane scrollPane = new JScrollPane(textArea);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         scrollPane.setPreferredSize(new Dimension(270, 500));
         JOptionPane.showMessageDialog(null, scrollPane, "Group List for Peer Programming",
-                JOptionPane.YES_NO_OPTION);
+                JOptionPane.ERROR_MESSAGE);
     }
 
     public static void startProgram() {
@@ -171,7 +171,7 @@ public class ClassGrouping {
         displayCohortTwoGroup();
     }
 
-    public static int[] randomizeArray(int[] array) {
+    public static void randomizeArray(int[] array) {
         int[] shuffledArray = new int[array.length];
         for (int i = 0; i < shuffledArray.length; i++) {
             shuffledArray[i] = array[i];
@@ -190,10 +190,9 @@ public class ClassGrouping {
 
         }
         System.out.print(Arrays.toString(shuffledArray));
-        return shuffledArray;
     }
 
-    public static String[] randomizeArray(String[] array) {
+    public static void randomizeArray(String[] array) {
         String[] shuffledArray = new String[array.length];
         for (int i = 0; i < shuffledArray.length; i++) {
             shuffledArray[i] = array[i];
@@ -212,10 +211,9 @@ public class ClassGrouping {
 
         }
         System.out.print(Arrays.toString(shuffledArray));
-        return shuffledArray;
     }
 
-    public static char[] randomizeArray(char[] array) {
+    public static void randomizeArray(char[] array) {
         char[] shuffledArray = new char[array.length];
         for (int i = 0; i < shuffledArray.length; i++) {
             shuffledArray[i] = array[i];
@@ -234,10 +232,9 @@ public class ClassGrouping {
 
         }
         System.out.print(Arrays.toString(shuffledArray));
-        return shuffledArray;
     }
 
-    public static double[] randomizeArray(double[] array) {
+    public static void randomizeArray(double[] array) {
         double[] shuffledArray = new double[array.length];
         for (int i = 0; i < shuffledArray.length; i++) {
             shuffledArray[i] = array[i];
@@ -256,7 +253,6 @@ public class ClassGrouping {
 
         }
         System.out.print(Arrays.toString(shuffledArray));
-        return shuffledArray;
     }
 
     public void setShuffledArray(int index, int elementValue) {
